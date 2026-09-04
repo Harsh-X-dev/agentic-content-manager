@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Topic {
+  id               String            @id @default(cuid())
+  topic            String
+  createdAt        DateTime          @default(now()) @map("created_at")
+  researchPackages ResearchPackage[]
+  scripts          Script[]
+  scenePlans       ScenePlan[]
+  qaResults        QaResult[]
+  videos           Video[]
+  approvals        Approval[]
+
+  @@map("topics")
+}
+
+model ResearchPackage {
+  id        String   @id @default(cuid())
+  topicId   String   @map("topic_id")
+  topic     Topic    @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  data      Json
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("research_packages")
+}
+
+model Script {
+  id        String   @id @default(cuid())
+  topicId   String   @map("topic_id")
+  topic     Topic    @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  data      Json
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("scripts")
+}
+
+model ScenePlan {
+  id        String   @id @default(cuid())
+  topicId   String   @map("topic_id")
+  topic     Topic    @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  data      Json
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("scene_plans")
+}
+
+model QaResult {
+  id        String   @id @default(cuid())
+  topicId   String   @map("topic_id")
+  topic     Topic    @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  passed    Boolean
+  issues    Json
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("qa_results")
+}
+
+model Video {
+  id                String   @id @default(cuid())
+  topicId           String   @map("topic_id")
+  topic             Topic    @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  path              String
+  instagramMediaId  String?  @map("instagram_media_id")
+  createdAt         DateTime @default(now()) @map("created_at")
+
+  @@map("videos")
+}
+
+model Approval {
+  id         String    @id @default(cuid())
+  topicId    String    @map("topic_id")
+  topic      Topic     @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  approved   Boolean
+  approvedAt DateTime? @map("approved_at")
+  createdAt  DateTime  @default(now()) @map("created_at")
+
+  @@map("approvals")
+}

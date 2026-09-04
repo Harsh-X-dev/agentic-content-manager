@@ -1,0 +1,49 @@
+{
+  "name": "mark_1",
+  "version": "1.0.0",
+  "description": "An autonomous agentic system built with TypeScript, Node.js, LangGraph, PostgreSQL, and Remotion to research developer topics, generate scripts & animated video scenes, verify quality, and publish Reels to Instagram.",
+  "homepage": "https://github.com/Harsh-X-dev/agentic-content-manager#readme",
+  "bugs": {
+    "url": "https://github.com/Harsh-X-dev/agentic-content-manager/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Harsh-X-dev/agentic-content-manager.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "tunnel": "tsx scripts/start-tunnel.ts",
+    "verify:qa": "tsx scripts/verify/verify-qa-detection.ts",
+    "verify:restart": "tsx scripts/verify/verify-restart-survival.ts",
+    "verify:postgres": "tsx scripts/verify/test-postgres-saver.ts"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.4.0",
+    "@types/pg": "^8.23.1",
+    "prisma": "^7.10.0",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "@langchain/core": "^1.2.9",
+    "@langchain/google-genai": "^2.3.0",
+    "@langchain/langgraph": "^1.4.13",
+    "@langchain/langgraph-checkpoint-postgres": "^1.0.5",
+    "@langchain/openrouter": "^0.4.11",
+    "@ngrok/ngrok": "^1.7.0",
+    "@prisma/adapter-pg": "^7.10.0",
+    "@prisma/client": "^7.10.0",
+    "@remotion/bundler": "^4.0.520",
+    "@remotion/renderer": "^4.0.520",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "pg": "^8.23.0",
+    "zod": "^4.4.3"
+  }
+}

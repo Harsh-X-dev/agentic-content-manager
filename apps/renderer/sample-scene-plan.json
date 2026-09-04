@@ -1,0 +1,42 @@
+{
+  "scenes": [
+    {
+      "type": "text",
+      "content": "Docker: Same code. Any machine.",
+      "durationSec": 5
+    },
+    {
+      "type": "diagram",
+      "content": {
+        "nodes": ["VM (Heavy)", "Docker Container"],
+        "connections": [
+          { "from": "VM (Heavy)", "to": "Docker Container" }
+        ]
+      },
+      "durationSec": 12
+    },
+    {
+      "type": "text",
+      "content": "Image = blueprint. Container = running instance.",
+      "durationSec": 8
+    },
+    {
+      "type": "codeBlock",
+      "content": "# Build an image from a Dockerfile\ndocker build -t my-app .\n\n# Run a container from that image\ndocker run -p 3000:3000 my-app",
+      "durationSec": 10
+    },
+    {
+      "type": "diagram",
+      "content": {
+        "nodes": ["Docker CLI", "Docker Daemon", "containerd", "runc", "Container"],
+        "connections": [
+          { "from": "Docker CLI",    "to": "Docker Daemon" },
+          { "from": "Docker Daemon", "to": "containerd" },
+          { "from": "containerd",    "to": "runc" },
+          { "from": "runc",          "to": "Container" }
+        ]
+      },
+      "durationSec": 12
+    }
+  ]
+}
